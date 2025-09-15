@@ -1,0 +1,40 @@
+env:
+  contexts:
+  - excludePaths: []
+    name: baseline
+    urls:
+    - http://testphp.vulnweb.com/
+  parameters:
+    failOnError: true
+    progressToStdout: false
+jobs:
+- parameters:
+    enableTags: false
+    maxAlertsPerRule: 10
+  type: passiveScan-config
+- parameters:
+    maxDuration: 1
+    url: http://testphp.vulnweb.com/
+  type: spider
+- parameters:
+    maxDuration: 0
+  type: passiveScan-wait
+- parameters:
+    format: Long
+    summaryFile: /home/zap/zap_out.json
+  rules: []
+  type: outputSummary
+- parameters:
+    reportDescription: ''
+    reportDir: /zap/wrk/
+    reportFile: /zap/wrk/zap_3afedc7f_1757934351.html
+    reportTitle: ZAP Scanning Report
+    template: traditional-html
+  type: report
+- parameters:
+    reportDescription: ''
+    reportDir: /zap/wrk/
+    reportFile: /zap/wrk/zap_3afedc7f_1757934351.json
+    reportTitle: ZAP Scanning Report
+    template: traditional-json
+  type: report
