@@ -1,6 +1,4 @@
-Perfeito 👌 — então vou montar um **`README.md`** passo-a-passo para você colocar no repositório. Ele inclui instruções claras para instalar no **Ubuntu Desktop**, configurar dependências, rodar o agente e depurar.
-
-Aqui está o conteúdo pronto:
+Perfeito 👌 — **`README.md`** passo-a-passo para você colocar no repositório. Instruções claras para instalar no **Ubuntu Desktop**, configurar dependências, rodar o agente e depurar.
 
 ---
 
@@ -186,14 +184,3 @@ Documentação oficial: [AFL++ GitHub](https://github.com/AFLplusplus/AFLplusplu
 * Melhorar seeds e instrumentação para fuzzing binário com AFL++.
 * Criar workflow CI (GitHub Actions) para rodar scans automáticos.
 
-```
-
----
-
-👉 Quer que eu já adapte seu `sec_agent.py` para:
-- logs mais verbosos (stdout/stderr do Docker e AFL),
-- volume Docker com `:rw`,
-- parsing mais robusto do JSON do ZAP,  
-
-assim o README + código ficam alinhados?
-```
