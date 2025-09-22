@@ -9,3 +9,7 @@ afl:
   enabled: false
 generator:
   enabled: true
+
+github:
+  owner: DaVitoria
+  repo: agent
