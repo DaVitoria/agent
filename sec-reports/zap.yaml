@@ -3,7 +3,7 @@ env:
   - excludePaths: []
     name: baseline
     urls:
-    - http://testphp.vulnweb.com/
+    - http://bancocn.com
   parameters:
     failOnError: true
     progressToStdout: false
@@ -14,7 +14,7 @@ jobs:
   type: passiveScan-config
 - parameters:
     maxDuration: 1
-    url: http://testphp.vulnweb.com/
+    url: http://bancocn.com
   type: spider
 - parameters:
     maxDuration: 0
@@ -27,21 +27,21 @@ jobs:
 - parameters:
     reportDescription: ''
     reportDir: /zap/wrk/
-    reportFile: zap_3afedc7f_1758551637.html
+    reportFile: zap_53d5e23e_1758553095.html
     reportTitle: ZAP Scanning Report
     template: traditional-html
   type: report
 - parameters:
     reportDescription: ''
     reportDir: /zap/wrk/
-    reportFile: 3afedc7f_1758551637_warn.txt
+    reportFile: 53d5e23e_1758553095_warn.txt
     reportTitle: ZAP Scanning Report
     template: traditional-md
   type: report
 - parameters:
     reportDescription: ''
     reportDir: /zap/wrk/
-    reportFile: zap_3afedc7f_1758551637.json
+    reportFile: zap_53d5e23e_1758553095.json
     reportTitle: ZAP Scanning Report
     template: traditional-json
   type: report
