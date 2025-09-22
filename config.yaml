@@ -1,0 +1,11 @@
+target_urls:
+  - "http://testphp.vulnweb.com/"
+reports_dir: "sec-reports"
+workspace_dir: "sec-work"
+zap:
+  mode: "auto"   # auto, api, docker
+  ajax: false
+afl:
+  enabled: false
+generator:
+  enabled: true
