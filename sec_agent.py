@@ -1,5 +1,5 @@
 """
-sec_agent_unified.py - Orquestrador de segurança (unificado)
+sec_agent.py - Orquestrador de segurança (unificado)
 
 Funcionalidades:
  - Integra com ZAP desktop via API (spider + ascan + gerar relatório HTML).
@@ -10,8 +10,8 @@ Funcionalidades:
  - CLI para ações individuais / pipeline.
 
 Uso:
-    python3 sec_agent_unified.py --config config.yaml run_pipeline
-    python3 sec_agent_unified.py --config config.yaml zap_scan --target http://localhost:5000
+    python3 sec_agent.py --config config.yaml run_pipeline
+    python3 sec_agent.py --config config.yaml zap_scan --target http://localhost:5000
 """
 
 import os
@@ -34,7 +34,7 @@ import random
 # ------------------------
 # Configuração de logging
 # ------------------------
-LOG = logging.getLogger("sec_agent_unified")
+LOG = logging.getLogger("sec_agent")
 LOG.setLevel(logging.DEBUG)
 ch = logging.StreamHandler(sys.stdout)
 ch.setLevel(logging.INFO)
@@ -323,12 +323,12 @@ class ZAPRunner:
         host_reports = str(self.reports_dir.resolve())
         cmd = [
             "docker", "run", "--rm",
-            "-v", f"{host_reports}:/zap/wrk:rw",
+            "-v", f"{host_reports}:rw",
             "ghcr.io/zaproxy/zaproxy:stable",
             "zap-baseline.py",
             "-t", target,
-            "-r", f"/zap/wrk/{html_out.name}",
-            "-J", f"/zap/wrk/{json_out.name}"
+            "-r", f"{html_out.name}",
+            "-J", f"{json_out.name}"
         ] + extra_args
         LOG.info("Iniciando ZAP baseline (docker) para %s", target)
         try:
@@ -363,9 +363,9 @@ class ZAPRunner:
                 "ghcr.io/zaproxy/zaproxy:stable",
                 "zap-baseline.py",
                 "-t", target,
-                "-r", f"/zap/wrk/{html_out.name}",
-                "-J", f"/zap/wrk/{json_out.name}",
-                "-w", f"/zap/wrk/{report_name_prefix}_{ts}_warn.txt",  # <-- warnings sempre salvos
+                "-r", f"{html_out.name}",
+                "-J", f"{json_out.name}",
+                "-w", f"{report_name_prefix}_{ts}_warn.txt",  # <-- warnings sempre salvos
                 "--auto"  # <-- não interativo, gera sempre
             ]
             res = run_cmd(cmd, check=False, capture_output=True, timeout=self.config.max_runtime_seconds)
@@ -720,7 +720,7 @@ def checklist(config: AgentConfig):
 # CLI / entrypoint
 # ------------------------
 def main():
-    parser = argparse.ArgumentParser(description="sec_agent_unified pipeline")
+    parser = argparse.ArgumentParser(description="sec_agent pipeline")
     parser.add_argument("--config", "-c", required=True, help="Caminho para o arquivo YAML de configuração")
     parser.add_argument("action", choices=["checklist", "zap_scan", "fuzz_run", "generate_payloads", "run_pipeline"], help="Ação a executar")
     parser.add_argument("--target", help="URL alvo ou caminho do binário (dependendo da ação)")

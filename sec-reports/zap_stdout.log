@@ -1,5 +1,5 @@
 Using the Automation Framework
-Total of 62 URLs
+Total of 63 URLs
 PASS: Vulnerable JS Library (Powered by Retire.js) [10003]
 PASS: Cookie No HttpOnly Flag [10010]
 PASS: Cookie Without Secure Flag [10011]
@@ -116,7 +116,7 @@ WARN-NEW: Absence of Anti-CSRF Tokens [10202] x 11
 	http://testphp.vulnweb.com/artists.php (200 OK)
 	http://testphp.vulnweb.com/cart.php (200 OK)
 	http://testphp.vulnweb.com/categories.php (200 OK)
-	http://testphp.vulnweb.com/guestbook.php (200 OK)
+	http://testphp.vulnweb.com/disclaimer.php (200 OK)
 WARN-NEW: Insufficient Site Isolation Against Spectre Vulnerability [90004] x 9 
 	http://testphp.vulnweb.com/ (200 OK)
 	http://testphp.vulnweb.com/categories.php (200 OK)
@@ -131,4 +131,4 @@ WARN-NEW: Charset Mismatch (Header Versus Meta Content-Type Charset) [90011] x 1
 	http://testphp.vulnweb.com/categories.php (200 OK)
 FAIL-NEW: 0	FAIL-INPROG: 0	WARN-NEW: 14	WARN-INPROG: 0	INFO: 0	IGNORE: 0	PASS: 53
 Automation plan failures:
-	Job report failed to generate report: NoSuchFileException /zap/wrk/zap/wrk/zap_3afedc7f_1758542997.html
+	Job report failed to generate report: NoSuchFileException /zap/wrk/zap/wrk/zap_3afedc7f_1758548475.html
